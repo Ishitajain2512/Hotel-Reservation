@@ -1,0 +1,41 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+env/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+db.sqlite3
+*.sqlite3
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+
+# MacOS
+.DS_Store
+
+# System files
+Thumbs.db
+
+# MySQL dumps or creds
+*.sql
+*.cnf
+
+# Media/static (optional)
+staticfiles/
+media/
+
+# Migrations (optional if auto-generated)
+**/migrations/*.py
+!**/migrations/__init__.py
