@@ -33,3 +33,11 @@ A web-based hotel room reservation system built with Django and MySQL. It allows
 - **Language:** Python 3
 
 ---
+
+## 🚀 Scope for Improvement & Extensibility
+
+The current UI is functional and can be redesigned or themed to match specific brand requirements using CSS frameworks like Tailwind or Bootstrap.
+
+The entire application can be dockerized for easy deployment and environment consistency.
+
+CI/CD pipelines can also be integrated for automated testing and deployment.
