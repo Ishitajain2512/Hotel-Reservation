@@ -2,6 +2,23 @@ from django.shortcuts import render, redirect
 from .models import Room, Booking
 from .forms import BookingForm
 from itertools import combinations
+import random
+
+def random_occupancy(request):
+    rooms = Room.objects.all()
+    for room in rooms:
+        room.is_available = random.choice([True, False])
+        room.save()
+    return redirect('book_room')
+
+
+def reset_bookings(request):
+    # Reset bookings and room availability
+    Booking.objects.all().delete()
+    for room in Room.objects.all():
+        room.is_available = True
+        room.save()
+    return redirect('book_room')
 
 def calculate_travel_time(rooms):
     floors = set(room.floor for room in rooms)
@@ -42,7 +59,14 @@ def book_room(request):
                 form.add_error(None, "Not enough rooms available.")
     else:
         form = BookingForm()
-    return render(request, 'booking/book_room.html', {'form': form})
+    
+    all_rooms = Room.objects.all().order_by('floor', 'number')
+    return render(request, 'booking/book_room.html', {
+        'form': form,
+        'rooms': all_rooms,
+        'floor_range': range(1, 11),  # Pass floor range here
+    })
+    # return render(request, 'booking/book_room.html', {'form': form})
 
 def booking_success(request):
     return render(request, 'booking/success.html')
